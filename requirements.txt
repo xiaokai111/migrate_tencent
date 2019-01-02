@@ -1,0 +1,4 @@
+requests
+sqlalchemy
+pymysql
+bs4
