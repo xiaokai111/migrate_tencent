@@ -23,7 +23,8 @@ class  requestHelper(object):
         return cookie_dict
 
     def getUrl(self):
-        url=r"https://lbs.gtimg.com/maplbs/qianxi/%s/%s.js?callback=JSONP_LOADER&_=1546182630136"%(self.date,self.citycode)
+        url=r"https://lbs.gtimg.com/maplbs/qianxi/%s/%s.js?callback=JSONP_LOADER&_=1546936585552"%(self.date,self.citycode)
+        print(url)
         return url
 
     def get_rawdata(self):

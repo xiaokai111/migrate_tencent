@@ -6,7 +6,6 @@ class parseHelper(object):
         self.requesthelper=rqt
     def cleandata(self):
         raw_data=self.requesthelper.get_rawdata()
-        print(raw_data.text)
         m=re.match(r'.*\(\[(.*)\,\]\)$',raw_data.text)
         jsonstr=m.group(1)
         jsonstr='[%s]'%jsonstr

@@ -1,25 +1,32 @@
-from get_webpage import requestHelper
-from webpage_parser import parseHelper
+from grasp import save
 import getopt,sys,os
 def revArgs():
      try:
-         opts, args = getopt.getopt(sys.argv[1:], "d:c:h",["help","date=","code="])
+         opts, args = getopt.getopt(sys.argv[1:], "s:e:n:h",["help","start=","end=","name="])
      except Exception as ex:
          print(ex.args)
-         print("the args format:  --date=20180101 --code=xxxx")
+         print("the args format:  --start=20180101 --end=20180102 --name=xxxx")
          os._exit(0)
-     date=code=''
+     start=end=name=''
      for opt,value in opts :
-        if opt in ('-d','--date'):
-             date=value
-        elif opt in ('-c','--code'):
-            code=value
-     return  date,code
+        if opt in ('-s','--start'):
+            start=value
+        if opt in ('-e','--end'):
+            end=value
+        elif opt in ('-n','--name'):
+            name=value
+     if start=='' or end=='' or name=='':
+         print('start ,end and name is not empty')
+         print("the args format:  --start=20180101 --end=20180102 --name=xxxx")
+         os._exit(0)
+     return  start,end,name
 
 
 if __name__ == "__main__":
-    date,code=revArgs()
-    rqt=requestHelper(date,code)
-    webparser=parseHelper(rqt)
-    data_dict=webparser.cleandata()
-    print(data_dict)
+    start,end,name=revArgs()
+    save(start,end,name)
+
+
+
+
+
