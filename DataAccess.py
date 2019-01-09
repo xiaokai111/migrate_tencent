@@ -28,6 +28,8 @@ def find_region(session,sqlwhere=''):
     return result
 
 def get_citycode(session,name):
+    if '恩施州' == name:
+        return '422800'
     r=find_region(session,r"name='%s市'"%(name))
     if len(r)>0:
         return r[0].code 
