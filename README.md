@@ -2,7 +2,9 @@
 爬取腾讯迁徙的人流数据
 
 # 程序环境
-> python3.x  os:linux或者macos  mysql5.6及其以上 
++ python3.x  
++ os:linux或者macos  
++ mysql5.6及其以上 
 
 # 安装python库
 
