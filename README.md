@@ -4,6 +4,8 @@
 # 安装python库
 
     pip install -r requirements.txt
+# 数据库数据导入
+>  新建一个数据库，名字自己定义，如migrate_tencent。在该数据库下执行region.sql 和 result.sql 导入表结构和数据
 
 
 # 配置数据库
