@@ -11,7 +11,7 @@ def save(start_date,end_date,departure):
     deadline=int(end_date)
     flag=True
     while (int(curdate)<=deadline):
-        print('curdate:%s'%curdate)
+        print('curdate:%s,departure:%s'%(curdate,departure))
         session=db_Session()
         code=get_citycode(session,departure)
         if not code:

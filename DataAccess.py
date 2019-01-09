@@ -30,6 +30,38 @@ def find_region(session,sqlwhere=''):
 def get_citycode(session,name):
     if '恩施州' == name:
         return '422800'
+    if '黔东南' == name:
+        return '522600'
+    if '昌江' == name:
+        return '469026'
+    if '大理' == name:
+        return '532900'
+    if '红河' == name:
+        return '532500'
+    if '楚雄' == name:
+        return '532300'
+    if '台湾' == name:
+        return '710000'
+    if '神农架' == name:
+        return '429021'
+    if '湘西' == name:
+        return '433100'
+    if '锡盟' == name:
+        return '152500'
+    if '西双版纳' == name:
+        return '532800'
+    if '黔西南' == name:
+        return '522300'
+    if '文山' == name:
+        return '532600'
+    if '黔南' == name:
+        return '522700'
+    if '凉山' == name:
+        return '513400'
+    if '澄迈县' == name:
+        return '469023'
+    if '甘南' == name:
+        return '623000'
     r=find_region(session,r"name='%s市'"%(name))
     if len(r)>0:
         return r[0].code 
