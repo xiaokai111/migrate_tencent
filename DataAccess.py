@@ -62,6 +62,10 @@ def get_citycode(session,name):
         return '469023'
     if '甘南' == name:
         return '623000'
+    if '陵水'== name:
+        return '469028'
+    if '坝州'== name:
+        return '513200'
     r=find_region(session,r"name='%s市'"%(name))
     if len(r)>0:
         return r[0].code 

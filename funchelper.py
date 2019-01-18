@@ -23,15 +23,19 @@ def data2result(curdate,curname,data_list,flowto):
                 cur_des_code=get_citycode(session,curname)
                 rt.departure=record[0]
                 rt.destination=curname
+                if not  cur_dep_code:
+                    raise Exception('departure:%s is not exist!'%record[0])
+                if not cur_des_code:
+                    raise Exception('destination:%s, is not exist!'%curname)
             else:
                 cur_dep_code=get_citycode(session,curname)
                 cur_des_code=get_citycode(session,record[0])
                 rt.departure=curname
                 rt.destination=record[0]
-            if not  cur_dep_code:
-                raise Exception('departure:%s is not exist!'%curname) 
-            if not cur_des_code:
-                raise Exception('destination:%s, is not exist!'%record[0]) 
+                if not  cur_dep_code:
+                    raise Exception('departure:%s is not exist!'%curname)
+                if not cur_des_code:
+                    raise Exception('destination:%s, is not exist!'%record[0])
             if isexist(session,curdate,cur_dep_code,cur_des_code):
                 continue
             rt.date=curdate
