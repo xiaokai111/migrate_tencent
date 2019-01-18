@@ -1,6 +1,5 @@
 from get_webpage import requestHelper
 import re,json,os
-
 class parseHelper(object):
     def __init__(self,rqt):
         self.requesthelper=rqt

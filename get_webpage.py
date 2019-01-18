@@ -1,9 +1,11 @@
 import requests 
+from enuminfo import flowto
 
 class  requestHelper(object):
-    def __init__(self,date,citycode):
+    def __init__(self,date,citycode,flowto):
         self.date=date
         self.citycode=citycode
+        self.flowto=flowto
 
     def get_cookie(self):
         cookie_dict={}
@@ -23,7 +25,10 @@ class  requestHelper(object):
         return cookie_dict
 
     def getUrl(self):
-        url=r"https://lbs.gtimg.com/maplbs/qianxi/%s/%s.js?callback=JSONP_LOADER&_=1546936585552"%(self.date,self.citycode)
+        if self.flowto==flowto.flowout:
+            url=r"https://lbs.gtimg.com/maplbs/qianxi/%s/%s16.js?callback=JSONP_LOADER&_=1546936585552"%(self.date,self.citycode)
+        else:
+            url=r"https://lbs.gtimg.com/maplbs/qianxi/%s/%s06.js?callback=JSONP_LOADER&_=1546936585552"%(self.date,self.citycode)
         print(url)
         return url
 
@@ -31,4 +36,3 @@ class  requestHelper(object):
         url=self.getUrl()
         cookie=self.get_cookie()
         return requests.get(url,cookies=cookie)
-
