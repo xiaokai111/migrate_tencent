@@ -1,5 +1,5 @@
 from datetime import datetime,timedelta
-from models import result,region
+from models import result,region,result_inflow ,result_flowout
 from DataAccess import *
 from enuminfo import flowto
 import os
@@ -15,8 +15,11 @@ def data2result(curdate,curname,data_list,flowto):
     data=[]
     flag=True
     for record in data_list:
-        rt=result()
         session=db_Session()
+        if flowto==flowto.inflow:
+            rt=result_inflow()
+        else:
+            rt=result_flowout()
         try:
             if flowto==flowto.inflow:
                 cur_dep_code=get_citycode(session,record[0])
@@ -36,7 +39,7 @@ def data2result(curdate,curname,data_list,flowto):
                     raise Exception('departure:%s is not exist!'%curname)
                 if not cur_des_code:
                     raise Exception('destination:%s, is not exist!'%record[0])
-            if isexist(session,curdate,cur_dep_code,cur_des_code):
+            if isexist(session,curdate,cur_dep_code,cur_des_code,flowto):
                 continue
             rt.date=curdate
             rt.dep_citycode=cur_dep_code

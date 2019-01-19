@@ -2,8 +2,9 @@ from sqlalchemy import  create_engine
 from sqlalchemy.orm import sessionmaker,join,scoped_session
 from DBconfig import GetPathDB_Mysql
 from sqlalchemy import and_,text,desc
-from models import region ,result
+from models import region ,result,result_inflow,result_flowout
 
+from enuminfo import flowto
 
 # 初始化数据库连接:
 dbpath=GetPathDB_Mysql()
@@ -71,9 +72,11 @@ def get_citycode(session,name):
         return r[0].code 
     else:
         return None
-def isexist(session,date,dep_citycode,des_citycode):
-    r=find_result(session,r"date='%s' and dep_citycode='%s' and des_citycode='%s'"%(date,dep_citycode,des_citycode))
-
+def isexist(session,date,dep_citycode,des_citycode,flowto):
+    if flowto==flowto.inflow:
+        r=find_result_inflow(session,r"date='%s' and dep_citycode='%s' and des_citycode='%s'"%(date,dep_citycode,des_citycode))
+    else:
+        r=find_result_flowout(session,r"date='%s' and dep_citycode='%s' and des_citycode='%s'"%(date,dep_citycode,des_citycode))
     if len(r) > 0:
         return True
     else:
@@ -84,6 +87,20 @@ def find_result(session,sqlwhere=''):
         data = session.query(result).all()
     else:
         data = session.query(result).filter(text(sqlwhere)).all()
+    return data
+def find_result_inflow(session,sqlwhere=''):
+    data=[]
+    if sqlwhere == '':
+        data = session.query(result_inflow).all()
+    else:
+        data = session.query(result_inflow).filter(text(sqlwhere)).all()
+    return data
+def find_result_flowout(session,sqlwhere=''):
+    data=[]
+    if sqlwhere == '':
+        data = session.query(result_flowout).all()
+    else:
+        data = session.query(result_flowout).filter(text(sqlwhere)).all()
     return data
 
 def add_result(session,result):

@@ -43,4 +43,42 @@ class result(Base):
     train_proportion=Column(NUMERIC)
     airplane_persontime=Column(Integer)
     airplane_proportion=Column(NUMERIC)
+class result_inflow(Base):
+    __tablename__ = 'result_inflow'
+    __table_args__ = (
+        PrimaryKeyConstraint('date', 'dep_citycode','des_citycode'),
+    )
+    ALLOWED_APP_ESSAY_STATES = ["selected", "not_selected", "pending"]
+    date = Column(String)
+    dep_citycode=Column(Integer)
+    departure=Column(String)
+    des_citycode=Column(Integer)
+    destination=Column(String)
+    total=Column(Integer)
+    heatvalue=Column(NUMERIC)
+    bus_persontime=Column(Integer)
+    bus_proportion=Column(NUMERIC)
+    train_persontime=Column(Integer)
+    train_proportion=Column(NUMERIC)
+    airplane_persontime=Column(Integer)
+    airplane_proportion=Column(NUMERIC)
 
+class result_flowout(Base):
+    __tablename__ = 'result_flowout'
+    __table_args__ = (
+        PrimaryKeyConstraint('date', 'dep_citycode','des_citycode'),
+    )
+    ALLOWED_APP_ESSAY_STATES = ["selected", "not_selected", "pending"]
+    date = Column(String)
+    dep_citycode=Column(Integer)
+    departure=Column(String)
+    des_citycode=Column(Integer)
+    destination=Column(String)
+    total=Column(Integer)
+    heatvalue=Column(NUMERIC)
+    bus_persontime=Column(Integer)
+    bus_proportion=Column(NUMERIC)
+    train_persontime=Column(Integer)
+    train_proportion=Column(NUMERIC)
+    airplane_persontime=Column(Integer)
+    airplane_proportion=Column(NUMERIC)
