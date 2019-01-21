@@ -10,7 +10,7 @@
 
     pip install -r requirements.txt
 # 数据库数据导入
->  新建一个数据库，名字自己定义，如migrate_tencent。在该数据库下执行region.sql 和 result.sql 导入表结构和数据
+>  新建一个数据库，名字自己定义，如migrate_tencent。在该数据库下执行region.sql 和 result_inflow.sql 和 result_flowout.sql 导入表结构和数据
 
 
 # 配置数据库
@@ -20,6 +20,8 @@
  
 # 运行
 
-    python run.py -s 20180101  -e 20180201 -n 武汉
+    python run.py -s 20180101  -e 20180201 -n 武汉 -t in #迁入
+    
+或者
 
-
+    python run.py -s 20170101 -e 20180101 -n 武汉 -t out # 迁出
