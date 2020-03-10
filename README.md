@@ -20,8 +20,8 @@
  
 # 运行
 
-    python run.py -s 20180101  -e 20180201 -n 武汉 -t in #迁入
+    python run.py -s 20180101  -e 20180201 -n 武汉 -p in #迁入
     
 或者
 
-    python run.py -s 20170101 -e 20180101 -n 武汉 -t out # 迁出
+    python run.py -s 20170101 -e 20180101 -n 武汉 -p out # 迁出
